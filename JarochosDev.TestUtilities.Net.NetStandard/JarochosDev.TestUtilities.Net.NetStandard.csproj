@@ -5,11 +5,28 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <AssemblyVersion>1.0.0.4</AssemblyVersion>
     <FileVersion>1.0.0.4</FileVersion>
-    <Version>1.0.0.4</Version>
+    <Version>1.0.0.5</Version>
+    <Authors>Jarochos Dev</Authors>
+    <Description>Provides access to the libraries that help to unit test the projects developed by Jarochos Dev.</Description>
+    <PackageLicenseFile>License.txt</PackageLicenseFile>
+    <PackageIcon>icon.png</PackageIcon>
+    <RepositoryUrl>https://github.com/Jarochosdev/JarochosDev.TestUtilities.Net</RepositoryUrl>
+    <NeutralLanguage>en</NeutralLanguage>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Moq" Version="4.13.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\License.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="D:\JarochosDev\WebSite\icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
