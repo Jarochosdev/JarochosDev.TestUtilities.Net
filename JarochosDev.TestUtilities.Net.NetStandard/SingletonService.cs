@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using Moq;
 
 namespace JarochosDev.TestUtilities.Net.NetStandard
@@ -36,14 +38,14 @@ namespace JarochosDev.TestUtilities.Net.NetStandard
             _singletonServices.Add(typeof(TSingleton), mock);
         }
 
-        public Mock GetMockSingleton<TSingleton>()
+        public Mock GetMockSingleton<TConcreteSingleton>()
         {
-            if (!_singletonServices.ContainsKey(typeof(TSingleton)))
+            if (!_singletonServices.ContainsKey(typeof(TConcreteSingleton)))
             {
                 throw new Exception("The mock singleton service has not been created.");
             }
 
-            return _singletonServices[typeof(TSingleton)];
+            return _singletonServices[typeof(TConcreteSingleton)];
         }
 
         public void ClearMockSingleton<TSingleton, TInstance>(string instanceName = "_instance")
@@ -51,6 +53,11 @@ namespace JarochosDev.TestUtilities.Net.NetStandard
             FieldInfo fieldInfoInstance = typeof(TSingleton).GetField(instanceName, BindingFlags.Static | BindingFlags.NonPublic);
             Mock mock = (Mock)Activator.CreateInstance(typeof(Mock<>).MakeGenericType(typeof(TInstance)), null);
             fieldInfoInstance.SetValue(null, null);
+
+            if (_singletonServices.ContainsKey(typeof(TSingleton)))
+            {
+                _singletonServices.Remove(typeof(TSingleton));
+            }
         }
     }
 
