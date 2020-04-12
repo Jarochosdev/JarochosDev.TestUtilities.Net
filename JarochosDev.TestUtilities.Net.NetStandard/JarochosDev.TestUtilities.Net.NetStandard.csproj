@@ -5,7 +5,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <AssemblyVersion>1.0.2.0</AssemblyVersion>
     <FileVersion>1.0.2.0</FileVersion>
-    <Version>1.0.1</Version>
+    <Version>1.0.1.1</Version>
     <Authors>Jarochos Dev</Authors>
     <Description>Provides access to the libraries that help to unit test the projects developed by Jarochos Dev.</Description>
     <PackageLicenseFile>License.txt</PackageLicenseFile>

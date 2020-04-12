@@ -11,6 +11,20 @@ namespace JarochosDev.TestUtilities.Net.NetStandard
             return RunMethod(objInstance.GetType(), methodName, objInstance, parameters, eFlags);
         }
 
+        public void SetProperty(object objInstance, string propertyName, object value)
+        {
+            var bindingFlags = BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public;
+            var propertyInfo = objInstance.GetType().GetProperty(propertyName, bindingFlags);
+            
+            if (propertyInfo == null)
+            {
+                throw new Exception("There is no property name '" + propertyName + "' for type '" + objInstance.GetType() + "'.");
+
+            }
+
+            propertyInfo.SetValue(objInstance, value);
+        }
+
         private object RunMethod(Type instanceType, string methodName, object objInstance, object[] parameters, BindingFlags flags)
         {
             try
